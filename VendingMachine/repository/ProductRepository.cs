@@ -21,10 +21,5 @@ namespace VendingMachineAssignment.repository
         {
             return products;
         }
-
-        public void AddProduct(Product product)
-        {
-            products.Add(product);
-        }
     }
 }

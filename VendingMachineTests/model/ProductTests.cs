@@ -6,39 +6,21 @@ namespace VendingMachineTests.model
 {
     public class ProductTests
     {
-        private Juice juice;
-        private CandyBar candyBar;
-        public ProductTests()
+
+        [Theory(DisplayName = "returns a string containing price and information")]
+        [MemberData(nameof(ProductData.ProductDataInformation), MemberType = typeof(ProductData))]
+        public void ExamineProduct(Product product, String expectedInformation)
         {
-            juice = new Juice(8, "Orange Juice", "Orange flavor");
-            candyBar = new CandyBar(12, "Chocolate bar", "Chocolate Flavor");
+            String result = product.Examine();
+            Assert.Equal(expectedInformation, result);
         }
 
-        [Fact(DisplayName = "returns a string containing price and information")]
-        public void Examine()
+        [Theory(DisplayName = "returns a string containing how to use the item")]
+        [MemberData(nameof(ProductData.ProductDataUse), MemberType = typeof(ProductData))]
+        public void UseProduct(Product product, String expectedUse)
         {
-            String result = juice.Examine();
-            String expected = "cost: 8 \nInformation: Orange flavor";
-
-            Assert.Equal(expected, result);
-        }
-
-        [Fact(DisplayName = "returns a string containing how to use the item")]
-        public void UseItemJuice()
-        {
-            String result = juice.Use();
-            String expected = "Open lid and drink";
-
-            Assert.Equal(expected, result);
-        }
-
-        [Fact(DisplayName = "returns a string containing how to use the item")]
-        public void UseItemCandyBar()
-        {
-            String result = candyBar.Use();
-            String expected = "Remove wrapper and eat";
-
-            Assert.Equal(expected, result);
+            String result = product.Use();
+            Assert.Equal(expectedUse, result);
         }
     }
 }

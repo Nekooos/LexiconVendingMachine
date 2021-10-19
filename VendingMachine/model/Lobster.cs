@@ -4,7 +4,7 @@ using System.Text;
 
 namespace VendingMachineAssignment.model
 {
-    class Lobster : Product
+    public class Lobster : Product
     {
         public Lobster(int cost, string name, string information) : base(cost, name , information)
         {

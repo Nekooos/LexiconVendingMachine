@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace VendingMachineAssignment.model
 {
@@ -19,7 +17,7 @@ namespace VendingMachineAssignment.model
 
         public String Examine()
         {
-            return $"cost: {Cost} \nInformation: {Information}";
+            return $"Cost: {Cost}\nInformation: {Information}";
         }
 
         public abstract String Use();

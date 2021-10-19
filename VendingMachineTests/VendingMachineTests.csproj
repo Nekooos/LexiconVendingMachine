@@ -14,10 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="repository\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\VendingMachine\VendingMachine.csproj" />
   </ItemGroup>
 

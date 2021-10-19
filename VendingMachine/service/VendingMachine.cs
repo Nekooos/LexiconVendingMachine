@@ -9,13 +9,13 @@ namespace VendingMachineAssignment.service
 {
     public class VendingMachine : IVendingMachine
     {
-        private readonly ProductRepository productRepository;
+        private ProductRepository productRepository;
         private int moneyPool; 
         private readonly int[] denominations = new int[] {1000, 500, 100, 50, 20, 10, 5, 1};
 
-        public VendingMachine()
+        public VendingMachine(ProductRepository productRepository)
         {
-            productRepository = new ProductRepository();
+            this.productRepository = productRepository;
         }
 
         public int MoneyPool
@@ -61,7 +61,7 @@ namespace VendingMachineAssignment.service
             } 
             else
             {
-                moneyPool = -product.Cost;
+                moneyPool -= product.Cost;
             }
             return product;
         }
