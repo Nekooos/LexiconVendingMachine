@@ -66,9 +66,10 @@ namespace VendingMachineAssignment.service
             return product;
         }
 
-        public List<Product> ShowAll()
+        public List<String> ShowAll()
         {
-            return productRepository.GetAll();
+            List<Product> products = productRepository.GetAll();
+            return Enumerable.Range(0, products.Count).Select(i => "" + (i + 1) + " " + products.ElementAt(i).Name).ToList();
         }
 
         private bool validDenomination(int money)

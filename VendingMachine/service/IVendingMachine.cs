@@ -8,7 +8,7 @@ namespace VendingMachineAssignment.service
     public interface IVendingMachine
     {
         Product Purchase(int input);
-        List<Product> ShowAll();
+        List<String> ShowAll();
         int InsertMoney(int money);
         Dictionary<int, int> EndTransaction();
     }

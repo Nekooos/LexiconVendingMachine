@@ -107,10 +107,10 @@ namespace VendingMachineTests.service
         [Fact(DisplayName = "Returns a list of all the items in the product repository")]
         public void ShowAll()
         {
-            List<Product> products = vendingMachine.ShowAll();
+            List<String> products = vendingMachine.ShowAll();
 
             Assert.True(products.Count == 3);
-            Assert.Equal("Chocolate bar", products.ElementAt(1).Name);
+            Assert.Equal("2 Chocolate bar", products.ElementAt(1));
         }
     }
 }
