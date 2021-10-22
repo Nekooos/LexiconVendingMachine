@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using VendingMachineAssignment.Exceptions;
 using VendingMachineAssignment.model;
 using VendingMachineAssignment.repository;
@@ -41,7 +42,7 @@ namespace VendingMachineAssignment.service
 
         public int InsertMoney(int money)
         {
-            if(validDenomination(money))
+            if(ValidDenomination(money))
             {
                 return moneyPool += money;
             } 
@@ -72,7 +73,7 @@ namespace VendingMachineAssignment.service
             return Enumerable.Range(0, products.Count).Select(i => "" + (i + 1) + " " + products.ElementAt(i).Name).ToList();
         }
 
-        private bool validDenomination(int money)
+        private bool ValidDenomination(int money)
         {
             foreach (int denomination in denominations)
             {

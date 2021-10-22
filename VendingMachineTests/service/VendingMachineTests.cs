@@ -123,5 +123,13 @@ namespace VendingMachineTests.service
             Assert.True(products.Count == 3);
             Assert.Equal("2 Chocolate bar", products.ElementAt(1));
         }
+
+        [Fact (DisplayName = "Returns a list of a class type")]
+        public void getByType()
+        {
+            List<Product> products = vendingMachine.ShowAllByType("SeaCreature");
+            //Assert.True(products.Count == 1);
+            Assert.Equal("SeaCreature", products.ElementAt(0).GetType().Name);
+        }
     }
 }

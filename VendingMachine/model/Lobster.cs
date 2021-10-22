@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using VendingMachineAssignment.model;
 
 namespace VendingMachineAssignment.model
 {
-    public class Lobster : Product
+    public class Lobster : SeaCreature
     {
         public Lobster(int cost, string name, string information) : base(cost, name , information)
         {
