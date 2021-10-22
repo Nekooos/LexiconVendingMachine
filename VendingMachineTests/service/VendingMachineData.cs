@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace VendingMachineTests.service
 {
@@ -8,7 +6,7 @@ namespace VendingMachineTests.service
     {
         public static IEnumerable<object[]> InsertCoinsData =>
             new List<object[]>
-    {
+            {
                 new object[] { 1, 1},
                 new object[] { 5, 5 },
                 new object[] { 10, 10 },
@@ -17,6 +15,14 @@ namespace VendingMachineTests.service
                 new object[] { 100, 100 },
                 new object[] { 500, 500 },
                 new object[] { 1000, 1000 }
-    };
+            };
+
+        public static IEnumerable<object[]> PurchaseData =>
+            new List<object[]>
+            {
+                new object[] { 0, "Orange Juice", 492},
+                new object[] { 1, "Chocolate bar", 488 },
+                new object[] { 2, "Lobster", 372 }
+            };
     }
 }

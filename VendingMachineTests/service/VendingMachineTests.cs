@@ -27,7 +27,7 @@ namespace VendingMachineTests.service
             vendingMachine = new VendingMachine(productRepository);
         }
         
-        [Fact]
+        [Fact( DisplayName = "Insert money multiple times")]
         public void InsertMoney()
         {
             vendingMachine.InsertMoney(1000);
@@ -43,6 +43,16 @@ namespace VendingMachineTests.service
 
             Assert.Equal(1778, vendingMachine.MoneyPool);
         }
+
+        [Theory(DisplayName ="Insert money with each valid denomination")]
+        [MemberData(nameof(VendingMachineData.InsertCoinsData), MemberType = typeof(VendingMachineData))]
+        public void InsertMoneyValid(int money, int expected)
+        {
+            int moneyPool = vendingMachine.InsertMoney(money);
+   
+            Assert.Equal(moneyPool, expected);
+        }
+
 
         [Fact(DisplayName = "Not a valid denomination, throws ArgumentException")]
         public void InsertMoneynotValidAmount()
@@ -83,15 +93,16 @@ namespace VendingMachineTests.service
             Assert.True(vendingMachine.MoneyPool == 0);
         }
 
-        [Fact (DisplayName = "Purchase removes cost from money pool and returns the product")]
-        public void Purchase()
+        [Theory (DisplayName = "Purchase removes cost from money pool and returns the product")]
+        [MemberData(nameof(VendingMachineData.PurchaseData), MemberType = typeof(VendingMachineData))]
+        public void Purchase(int productPosition, String ExpectedProductName, int expectedMoneyPool)
         {
-            vendingMachine.InsertMoney(50);
+            vendingMachine.InsertMoney(500);
 
-            Product product = vendingMachine.Purchase(1);
+            Product product = vendingMachine.Purchase(productPosition);
 
-            Assert.Equal(38, vendingMachine.MoneyPool);
-            Assert.Equal("Chocolate bar", product.Name);
+            Assert.Equal(expectedMoneyPool, vendingMachine.MoneyPool);
+            Assert.Equal(ExpectedProductName, product.Name);
         }
 
         [Fact(DisplayName = "Purchase with not enough money throws NotEnoughMoneyException")]
