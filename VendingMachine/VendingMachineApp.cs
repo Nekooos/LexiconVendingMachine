@@ -105,12 +105,16 @@ namespace VendingMachineAppMenu
                 case 3:
 
                     Dictionary<int, int> coins = vendingMachine.EndTransaction();
-                    coins.ToList().Where(keyValue => keyValue.Value != 0).ToList().ForEach(keyValue => Console.WriteLine($"Coins returned: {keyValue.Value} st {keyValue.Key} kr"));
+                    Console.WriteLine("Coins returned: ");
+                    coins.ToList()
+                        .Where(keyValue => keyValue.Value != 0)
+                        .ToList()
+                        .ForEach(keyValue => Console.WriteLine($"{keyValue.Value} st {keyValue.Key} kr"));
                     break;
 
                 default:
 
-                    isRunning = true;
+                    isRunning = false;
                     break;
 
 

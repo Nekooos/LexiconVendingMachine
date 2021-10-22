@@ -9,7 +9,6 @@ namespace VendingMachineProgram
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("test");
             VendingMachineApp vendingMachineApp = new VendingMachineApp();
             vendingMachineApp.Start();
 
